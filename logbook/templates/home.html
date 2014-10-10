@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>A simple map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id="marker-edit-symbol-pages" class="marker-edit-symbol sliding v active1 clip row4">
+
+    <div class="animate col12 clearfix row5">
+
+        <input id="marker-marker-symbol-" class="label-select" data-geojson="marker-symbol." type="radio" name="marker-symbol" value="">
+
+      <label for="marker-marker-symbol-" class="col1 symbol center round"><span class="maki-icon strong alpha"></span></label>
+
+
+        <input id="marker-marker-symbol-circle-stroked" class="label-select" data-geojson="marker-symbol.circle-stroked" type="radio" name="marker-symbol" value="circle-stroked">
+
+      <label for="marker-marker-symbol-circle-stroked" class="col1 symbol center round" title="Circle stroked"><span class="maki-icon circle-stroked"></span></label>
+
+
+        <input id="marker-marker-symbol-circle" class="label-select" data-geojson="marker-symbol.circle" type="radio" name="marker-symbol" value="circle">
+
+      <label for="marker-marker-symbol-circle" class="col1 symbol center round" title="Circle solid"><span class="maki-icon circle"></span></label>
+
+
+        <input id="marker-marker-symbol-square-stroked" class="label-select" data-geojson="marker-symbol.square-stroked" type="radio" name="marker-symbol" value="square-stroked">
+
+      <label for="marker-marker-symbol-square-stroked" class="col1 symbol center round" title="Square stroked"><span class="maki-icon square-stroked"></span></label>
+
+
+        <input id="marker-marker-symbol-square" class="label-select" data-geojson="marker-symbol.square" type="radio" name="marker-symbol" value="square">
+
+      <label for="marker-marker-symbol-square" class="col1 symbol center round" title="Square solid"><span class="maki-icon square"></span></label>
+
+
+        <input id="marker-marker-symbol-triangle-stroked" class="label-select" data-geojson="marker-symbol.triangle-stroked" type="radio" name="marker-symbol" value="triangle-stroked">
+
+      <label for="marker-marker-symbol-triangle-stroked" class="col1 symbol center round" title="Triangle stroked"><span class="maki-icon triangle-stroked"></span></label>
+
+
+        <input id="marker-marker-symbol-triangle" class="label-select" data-geojson="marker-symbol.triangle" type="radio" name="marker-symbol" value="triangle">
+
+      <label for="marker-marker-symbol-triangle" class="col1 symbol center round" title="Triangle solid"><span class="maki-icon triangle"></span></label>
+
+
+        <input id="marker-marker-symbol-star-stroked" class="label-select" data-geojson="marker-symbol.star-stroked" type="radio" name="marker-symbol" value="star-stroked">
+
+      <label for="marker-marker-symbol-star-stroked" class="col1 symbol center round" title="Star stroked"><span class="maki-icon star-stroked"></span></label>
+
+
+        <input id="marker-marker-symbol-star" class="label-select" data-geojson="marker-symbol.star" type="radio" name="marker-symbol" value="star">
+
+      <label for="marker-marker-symbol-star" class="col1 symbol center round" title="Star solid"><span class="maki-icon star"></span></label>
+
+
+        <input id="marker-marker-symbol-cross" class="label-select" data-geojson="marker-symbol.cross" type="radio" name="marker-symbol" value="cross">
+
+      <label for="marker-marker-symbol-cross" class="col1 symbol center round" title="Cross"><span class="maki-icon cross"></span></label>
+
+
+        <input id="marker-marker-symbol-marker-stroked" class="label-select" data-geojson="marker-symbol.marker-stroked" type="radio" name="marker-symbol" value="marker-stroked">
+
+      <label for="marker-marker-symbol-marker-stroked" class="col1 symbol center round" title="Marker Stroke"><span class="maki-icon marker-stroked"></span></label>
+
+
+        <input id="marker-marker-symbol-marker" class="label-select" data-geojson="marker-symbol.marker" type="radio" name="marker-symbol" value="marker">
+
+      <label for="marker-marker-symbol-marker" class="col1 symbol center round" title="Marker Solid"><span class="maki-icon marker"></span></label>
+
+
+        <input id="marker-marker-symbol-religious-jewish" class="label-select" data-geojson="marker-symbol.religious-jewish" type="radio" name="marker-symbol" value="religious-jewish">
+
+      <label for="marker-marker-symbol-religious-jewish" class="col1 symbol center round" title="Religious Jewish"><span class="maki-icon religious-jewish"></span></label>
+
+
+        <input id="marker-marker-symbol-religious-christian" class="label-select" data-geojson="marker-symbol.religious-christian" type="radio" name="marker-symbol" value="religious-christian">
+
+      <label for="marker-marker-symbol-religious-christian" class="col1 symbol center round" title="Religious Christian"><span class="maki-icon religious-christian"></span></label>
+
+
+        <input id="marker-marker-symbol-religious-muslim" class="label-select" data-geojson="marker-symbol.religious-muslim" type="radio" name="marker-symbol" value="religious-muslim">
+
+      <label for="marker-marker-symbol-religious-muslim" class="col1 symbol center round" title="Religious Muslim"><span class="maki-icon religious-muslim"></span></label>
+
+
+        <input id="marker-marker-symbol-cemetery" class="label-select" data-geojson="marker-symbol.cemetery" type="radio" name="marker-symbol" value="cemetery">
+
+      <label for="marker-marker-symbol-cemetery" class="col1 symbol center round" title="Cemetery"><span class="maki-icon cemetery"></span></label>
+
+
+        <input id="marker-marker-symbol-rocket" class="label-select" data-geojson="marker-symbol.rocket" type="radio" name="marker-symbol" value="rocket">
+
+      <label for="marker-marker-symbol-rocket" class="col1 symbol center round" title="Rocket"><span class="maki-icon rocket"></span></label>
+
+
+        <input id="marker-marker-symbol-airport" class="label-select" data-geojson="marker-symbol.airport" type="radio" name="marker-symbol" value="airport">
+
+      <label for="marker-marker-symbol-airport" class="col1 symbol center round" title="Airport"><span class="maki-icon airport"></span></label>
+
+
+        <input id="marker-marker-symbol-heliport" class="label-select" data-geojson="marker-symbol.heliport" type="radio" name="marker-symbol" value="heliport">
+
+      <label for="marker-marker-symbol-heliport" class="col1 symbol center round" title="Heliport"><span class="maki-icon heliport"></span></label>
+
+
+        <input id="marker-marker-symbol-rail" class="label-select" data-geojson="marker-symbol.rail" type="radio" name="marker-symbol" value="rail">
+
+      <label for="marker-marker-symbol-rail" class="col1 symbol center round" title="Rail"><span class="maki-icon rail"></span></label>
+
+
+        <input id="marker-marker-symbol-rail-metro" class="label-select" data-geojson="marker-symbol.rail-metro" type="radio" name="marker-symbol" value="rail-metro">
+
+      <label for="marker-marker-symbol-rail-metro" class="col1 symbol center round" title="Rail Metro"><span class="maki-icon rail-metro"></span></label>
+
+
+        <input id="marker-marker-symbol-rail-light" class="label-select" data-geojson="marker-symbol.rail-light" type="radio" name="marker-symbol" value="rail-light">
+
+      <label for="marker-marker-symbol-rail-light" class="col1 symbol center round" title="Rail Light"><span class="maki-icon rail-light"></span></label>
+
+
+        <input id="marker-marker-symbol-bus" class="label-select" data-geojson="marker-symbol.bus" type="radio" name="marker-symbol" value="bus">
+
+      <label for="marker-marker-symbol-bus" class="col1 symbol center round" title="Bus"><span class="maki-icon bus"></span></label>
+
+
+        <input id="marker-marker-symbol-fuel" class="label-select" data-geojson="marker-symbol.fuel" type="radio" name="marker-symbol" value="fuel">
+
+      <label for="marker-marker-symbol-fuel" class="col1 symbol center round" title="Fuel"><span class="maki-icon fuel"></span></label>
+
+
+        <input id="marker-marker-symbol-parking" class="label-select" data-geojson="marker-symbol.parking" type="radio" name="marker-symbol" value="parking">
+
+      <label for="marker-marker-symbol-parking" class="col1 symbol center round" title="Parking"><span class="maki-icon parking"></span></label>
+
+
+        <input id="marker-marker-symbol-parking-garage" class="label-select" data-geojson="marker-symbol.parking-garage" type="radio" name="marker-symbol" value="parking-garage">
+
+      <label for="marker-marker-symbol-parking-garage" class="col1 symbol center round" title="Parking Garage"><span class="maki-icon parking-garage"></span></label>
+
+
+        <input id="marker-marker-symbol-airfield" class="label-select" data-geojson="marker-symbol.airfield" type="radio" name="marker-symbol" value="airfield">
+
+      <label for="marker-marker-symbol-airfield" class="col1 symbol center round" title="Airfield"><span class="maki-icon airfield"></span></label>
+
+
+        <input id="marker-marker-symbol-roadblock" class="label-select" data-geojson="marker-symbol.roadblock" type="radio" name="marker-symbol" value="roadblock">
+
+      <label for="marker-marker-symbol-roadblock" class="col1 symbol center round" title="Roadblock"><span class="maki-icon roadblock"></span></label>
+
+
+        <input id="marker-marker-symbol-ferry" class="label-select" data-geojson="marker-symbol.ferry" type="radio" name="marker-symbol" value="ferry">
+
+      <label for="marker-marker-symbol-ferry" class="col1 symbol center round" title="Ferry"><span class="maki-icon ferry"></span></label>
+
+
+        <input id="marker-marker-symbol-harbor" class="label-select" data-geojson="marker-symbol.harbor" type="radio" name="marker-symbol" value="harbor">
+
+      <label for="marker-marker-symbol-harbor" class="col1 symbol center round" title="Harbor"><span class="maki-icon harbor"></span></label>
+
+
+        <input id="marker-marker-symbol-bicycle" class="label-select" data-geojson="marker-symbol.bicycle" type="radio" name="marker-symbol" value="bicycle">
+
+      <label for="marker-marker-symbol-bicycle" class="col1 symbol center round" title="Bicycle"><span class="maki-icon bicycle"></span></label>
+
+
+        <input id="marker-marker-symbol-park" class="label-select" data-geojson="marker-symbol.park" type="radio" name="marker-symbol" value="park">
+
+      <label for="marker-marker-symbol-park" class="col1 symbol center round" title="Park"><span class="maki-icon park"></span></label>
+
+
+        <input id="marker-marker-symbol-park2" class="label-select" data-geojson="marker-symbol.park2" type="radio" name="marker-symbol" value="park2">
+
+      <label for="marker-marker-symbol-park2" class="col1 symbol center round" title="Park 2"><span class="maki-icon park2"></span></label>
+
+
+        <input id="marker-marker-symbol-museum" class="label-select" data-geojson="marker-symbol.museum" type="radio" name="marker-symbol" value="museum">
+
+      <label for="marker-marker-symbol-museum" class="col1 symbol center round" title="Museum"><span class="maki-icon museum"></span></label>
+
+
+        <input id="marker-marker-symbol-lodging" class="label-select" data-geojson="marker-symbol.lodging" type="radio" name="marker-symbol" value="lodging">
+
+      <label for="marker-marker-symbol-lodging" class="col1 symbol center round" title="Lodging"><span class="maki-icon lodging"></span></label>
+
+
+        <input id="marker-marker-symbol-monument" class="label-select" data-geojson="marker-symbol.monument" type="radio" name="marker-symbol" value="monument">
+
+      <label for="marker-marker-symbol-monument" class="col1 symbol center round" title="Monument"><span class="maki-icon monument"></span></label>
+
+
+        <input id="marker-marker-symbol-zoo" class="label-select" data-geojson="marker-symbol.zoo" type="radio" name="marker-symbol" value="zoo">
+
+      <label for="marker-marker-symbol-zoo" class="col1 symbol center round" title="Zoo"><span class="maki-icon zoo"></span></label>
+
+
+        <input id="marker-marker-symbol-garden" class="label-select" data-geojson="marker-symbol.garden" type="radio" name="marker-symbol" value="garden">
+
+      <label for="marker-marker-symbol-garden" class="col1 symbol center round" title="Garden"><span class="maki-icon garden"></span></label>
+
+
+        <input id="marker-marker-symbol-campsite" class="label-select" data-geojson="marker-symbol.campsite" type="radio" name="marker-symbol" value="campsite">
+
+      <label for="marker-marker-symbol-campsite" class="col1 symbol center round" title="Campsite"><span class="maki-icon campsite"></span></label>
+
+
+        <input id="marker-marker-symbol-theatre" class="label-select" data-geojson="marker-symbol.theatre" type="radio" name="marker-symbol" value="theatre">
+
+      <label for="marker-marker-symbol-theatre" class="col1 symbol center round" title="Theatre"><span class="maki-icon theatre"></span></label>
+
+
+        <input id="marker-marker-symbol-art-gallery" class="label-select" data-geojson="marker-symbol.art-gallery" type="radio" name="marker-symbol" value="art-gallery">
+
+      <label for="marker-marker-symbol-art-gallery" class="col1 symbol center round" title="Art gallery"><span class="maki-icon art-gallery"></span></label>
+
+
+        <input id="marker-marker-symbol-pitch" class="label-select" data-geojson="marker-symbol.pitch" type="radio" name="marker-symbol" value="pitch">
+
+      <label for="marker-marker-symbol-pitch" class="col1 symbol center round" title="Pitch"><span class="maki-icon pitch"></span></label>
+
+
+        <input id="marker-marker-symbol-soccer" class="label-select" data-geojson="marker-symbol.soccer" type="radio" name="marker-symbol" value="soccer">
+
+      <label for="marker-marker-symbol-soccer" class="col1 symbol center round" title="Soccer"><span class="maki-icon soccer"></span></label>
+
+
+        <input id="marker-marker-symbol-america-football" class="label-select" data-geojson="marker-symbol.america-football" type="radio" name="marker-symbol" value="america-football">
+
+      <label for="marker-marker-symbol-america-football" class="col1 symbol center round" title="American Football"><span class="maki-icon america-football"></span></label>
+
+
+        <input id="marker-marker-symbol-tennis" class="label-select" data-geojson="marker-symbol.tennis" type="radio" name="marker-symbol" value="tennis">
+
+      <label for="marker-marker-symbol-tennis" class="col1 symbol center round" title="Tennis"><span class="maki-icon tennis"></span></label>
+
+
+        <input id="marker-marker-symbol-basketball" class="label-select" data-geojson="marker-symbol.basketball" type="radio" name="marker-symbol" value="basketball">
+
+      <label for="marker-marker-symbol-basketball" class="col1 symbol center round" title="Basketball"><span class="maki-icon basketball"></span></label>
+
+
+        <input id="marker-marker-symbol-baseball" class="label-select" data-geojson="marker-symbol.baseball" type="radio" name="marker-symbol" value="baseball">
+
+      <label for="marker-marker-symbol-baseball" class="col1 symbol center round" title="Baseball"><span class="maki-icon baseball"></span></label>
+
+
+        <input id="marker-marker-symbol-golf" class="label-select" data-geojson="marker-symbol.golf" type="radio" name="marker-symbol" value="golf">
+
+      <label for="marker-marker-symbol-golf" class="col1 symbol center round" title="Golf"><span class="maki-icon golf"></span></label>
+
+
+        <input id="marker-marker-symbol-swimming" class="label-select" data-geojson="marker-symbol.swimming" type="radio" name="marker-symbol" value="swimming">
+
+      <label for="marker-marker-symbol-swimming" class="col1 symbol center round" title="Swimming"><span class="maki-icon swimming"></span></label>
+
+
+        <input id="marker-marker-symbol-cricket" class="label-select" data-geojson="marker-symbol.cricket" type="radio" name="marker-symbol" value="cricket">
+
+      <label for="marker-marker-symbol-cricket" class="col1 symbol center round" title="Cricket"><span class="maki-icon cricket"></span></label>
+
+
+        <input id="marker-marker-symbol-skiing" class="label-select" data-geojson="marker-symbol.skiing" type="radio" name="marker-symbol" value="skiing">
+
+      <label for="marker-marker-symbol-skiing" class="col1 symbol center round" title="Skiing"><span class="maki-icon skiing"></span></label>
+
+
+        <input id="marker-marker-symbol-school" class="label-select" data-geojson="marker-symbol.school" type="radio" name="marker-symbol" value="school">
+
+      <label for="marker-marker-symbol-school" class="col1 symbol center round" title="School"><span class="maki-icon school"></span></label>
+
+
+        <input id="marker-marker-symbol-college" class="label-select" data-geojson="marker-symbol.college" type="radio" name="marker-symbol" value="college">
+
+      <label for="marker-marker-symbol-college" class="col1 symbol center round" title="College"><span class="maki-icon college"></span></label>
+
+
+        <input id="marker-marker-symbol-library" class="label-select" data-geojson="marker-symbol.library" type="radio" name="marker-symbol" value="library">
+
+      <label for="marker-marker-symbol-library" class="col1 symbol center round" title="Library"><span class="maki-icon library"></span></label>
+
+
+        <input id="marker-marker-symbol-post" class="label-select" data-geojson="marker-symbol.post" type="radio" name="marker-symbol" value="post">
+
+      <label for="marker-marker-symbol-post" class="col1 symbol center round" title="Post"><span class="maki-icon post"></span></label>
+
+
+        <input id="marker-marker-symbol-fire-station" class="label-select" data-geojson="marker-symbol.fire-station" type="radio" name="marker-symbol" value="fire-station">
+
+      <label for="marker-marker-symbol-fire-station" class="col1 symbol center round" title="Fire station"><span class="maki-icon fire-station"></span></label>
+
+
+        <input id="marker-marker-symbol-town-hall" class="label-select" data-geojson="marker-symbol.town-hall" type="radio" name="marker-symbol" value="town-hall">
+
+      <label for="marker-marker-symbol-town-hall" class="col1 symbol center round" title="Town hall"><span class="maki-icon town-hall"></span></label>
+
+
+        <input id="marker-marker-symbol-police" class="label-select" data-geojson="marker-symbol.police" type="radio" name="marker-symbol" value="police">
+
+      <label for="marker-marker-symbol-police" class="col1 symbol center round" title="Police"><span class="maki-icon police"></span></label>
+
+
+        <input id="marker-marker-symbol-prison" class="label-select" data-geojson="marker-symbol.prison" type="radio" name="marker-symbol" value="prison">
+
+      <label for="marker-marker-symbol-prison" class="col1 symbol center round" title="Prison"><span class="maki-icon prison"></span></label>
+
+
+        <input id="marker-marker-symbol-embassy" class="label-select" data-geojson="marker-symbol.embassy" type="radio" name="marker-symbol" value="embassy">
+
+      <label for="marker-marker-symbol-embassy" class="col1 symbol center round" title="Embassy"><span class="maki-icon embassy"></span></label>
+
+
+  </div>
+
+    <div class="animate col12 clearfix row5">
+
+        <input id="marker-marker-symbol-beer" class="label-select" data-geojson="marker-symbol.beer" type="radio" name="marker-symbol" value="beer">
+
+      <label for="marker-marker-symbol-beer" class="col1 symbol center round" title="Beer"><span class="maki-icon beer"></span></label>
+
+
+        <input id="marker-marker-symbol-restaurant" class="label-select" data-geojson="marker-symbol.restaurant" type="radio" name="marker-symbol" value="restaurant">
+
+      <label for="marker-marker-symbol-restaurant" class="col1 symbol center round" title="Restaurant"><span class="maki-icon restaurant"></span></label>
+
+
+        <input id="marker-marker-symbol-cafe" class="label-select" data-geojson="marker-symbol.cafe" type="radio" name="marker-symbol" value="cafe">
+
+      <label for="marker-marker-symbol-cafe" class="col1 symbol center round" title="Cafe"><span class="maki-icon cafe"></span></label>
+
+
+        <input id="marker-marker-symbol-shop" class="label-select" data-geojson="marker-symbol.shop" type="radio" name="marker-symbol" value="shop">
+
+      <label for="marker-marker-symbol-shop" class="col1 symbol center round" title="Shop"><span class="maki-icon shop"></span></label>
+
+
+        <input id="marker-marker-symbol-fast-food" class="label-select" data-geojson="marker-symbol.fast-food" type="radio" name="marker-symbol" value="fast-food">
+
+      <label for="marker-marker-symbol-fast-food" class="col1 symbol center round" title="Fast Food"><span class="maki-icon fast-food"></span></label>
+
+
+        <input id="marker-marker-symbol-bar" class="label-select" data-geojson="marker-symbol.bar" type="radio" name="marker-symbol" value="bar">
+
+      <label for="marker-marker-symbol-bar" class="col1 symbol center round" title="Bar"><span class="maki-icon bar"></span></label>
+
+
+        <input id="marker-marker-symbol-bank" class="label-select" data-geojson="marker-symbol.bank" type="radio" name="marker-symbol" value="bank">
+
+      <label for="marker-marker-symbol-bank" class="col1 symbol center round" title="Bank"><span class="maki-icon bank"></span></label>
+
+
+        <input id="marker-marker-symbol-grocery" class="label-select" data-geojson="marker-symbol.grocery" type="radio" name="marker-symbol" value="grocery">
+
+      <label for="marker-marker-symbol-grocery" class="col1 symbol center round" title="Grocery"><span class="maki-icon grocery"></span></label>
+
+
+        <input id="marker-marker-symbol-cinema" class="label-select" data-geojson="marker-symbol.cinema" type="radio" name="marker-symbol" value="cinema">
+
+      <label for="marker-marker-symbol-cinema" class="col1 symbol center round" title="Cinema"><span class="maki-icon cinema"></span></label>
+
+
+        <input id="marker-marker-symbol-pharmacy" class="label-select" data-geojson="marker-symbol.pharmacy" type="radio" name="marker-symbol" value="pharmacy">
+
+      <label for="marker-marker-symbol-pharmacy" class="col1 symbol center round" title="Pharmacy"><span class="maki-icon pharmacy"></span></label>
+
+
+        <input id="marker-marker-symbol-hospital" class="label-select" data-geojson="marker-symbol.hospital" type="radio" name="marker-symbol" value="hospital">
+
+      <label for="marker-marker-symbol-hospital" class="col1 symbol center round" title="Hospital"><span class="maki-icon hospital"></span></label>
+
+
+        <input id="marker-marker-symbol-danger" class="label-select" data-geojson="marker-symbol.danger" type="radio" name="marker-symbol" value="danger">
+
+      <label for="marker-marker-symbol-danger" class="col1 symbol center round" title="Danger"><span class="maki-icon danger"></span></label>
+
+
+        <input id="marker-marker-symbol-industrial" class="label-select" data-geojson="marker-symbol.industrial" type="radio" name="marker-symbol" value="industrial">
+
+      <label for="marker-marker-symbol-industrial" class="col1 symbol center round" title="Industrial"><span class="maki-icon industrial"></span></label>
+
+
+        <input id="marker-marker-symbol-warehouse" class="label-select" data-geojson="marker-symbol.warehouse" type="radio" name="marker-symbol" value="warehouse">
+
+      <label for="marker-marker-symbol-warehouse" class="col1 symbol center round" title="Warehouse"><span class="maki-icon warehouse"></span></label>
+
+
+        <input id="marker-marker-symbol-commercial" class="label-select" data-geojson="marker-symbol.commercial" type="radio" name="marker-symbol" value="commercial">
+
+      <label for="marker-marker-symbol-commercial" class="col1 symbol center round" title="Commercial"><span class="maki-icon commercial"></span></label>
+
+
+        <input id="marker-marker-symbol-building" class="label-select" data-geojson="marker-symbol.building" type="radio" name="marker-symbol" value="building">
+
+      <label for="marker-marker-symbol-building" class="col1 symbol center round" title="Building"><span class="maki-icon building"></span></label>
+
+
+        <input id="marker-marker-symbol-place-of-worship" class="label-select" data-geojson="marker-symbol.place-of-worship" type="radio" name="marker-symbol" value="place-of-worship">
+
+      <label for="marker-marker-symbol-place-of-worship" class="col1 symbol center round" title="Place of worship"><span class="maki-icon place-of-worship"></span></label>
+
+
+        <input id="marker-marker-symbol-alcohol-shop" class="label-select" data-geojson="marker-symbol.alcohol-shop" type="radio" name="marker-symbol" value="alcohol-shop">
+
+      <label for="marker-marker-symbol-alcohol-shop" class="col1 symbol center round" title="Alcohol shop"><span class="maki-icon alcohol-shop"></span></label>
+
+
+        <input id="marker-marker-symbol-logging" class="label-select" data-geojson="marker-symbol.logging" type="radio" name="marker-symbol" value="logging">
+
+      <label for="marker-marker-symbol-logging" class="col1 symbol center round" title="Logging"><span class="maki-icon logging"></span></label>
+
+
+        <input id="marker-marker-symbol-oil-well" class="label-select" data-geojson="marker-symbol.oil-well" type="radio" name="marker-symbol" value="oil-well">
+
+      <label for="marker-marker-symbol-oil-well" class="col1 symbol center round" title="Oil well"><span class="maki-icon oil-well"></span></label>
+
+
+        <input id="marker-marker-symbol-slaughterhouse" class="label-select" data-geojson="marker-symbol.slaughterhouse" type="radio" name="marker-symbol" value="slaughterhouse">
+
+      <label for="marker-marker-symbol-slaughterhouse" class="col1 symbol center round" title="Slaughterhouse"><span class="maki-icon slaughterhouse"></span></label>
+
+
+        <input id="marker-marker-symbol-dam" class="label-select" data-geojson="marker-symbol.dam" type="radio" name="marker-symbol" value="dam">
+
+      <label for="marker-marker-symbol-dam" class="col1 symbol center round" title="Dam"><span class="maki-icon dam"></span></label>
+
+
+        <input id="marker-marker-symbol-water" class="label-select" data-geojson="marker-symbol.water" type="radio" name="marker-symbol" value="water">
+
+      <label for="marker-marker-symbol-water" class="col1 symbol center round" title="Water"><span class="maki-icon water"></span></label>
+
+
+        <input id="marker-marker-symbol-wetland" class="label-select" data-geojson="marker-symbol.wetland" type="radio" name="marker-symbol" value="wetland">
+
+      <label for="marker-marker-symbol-wetland" class="col1 symbol center round" title="Wetland"><span class="maki-icon wetland"></span></label>
+
+
+        <input id="marker-marker-symbol-disability" class="label-select" data-geojson="marker-symbol.disability" type="radio" name="marker-symbol" value="disability">
+
+      <label for="marker-marker-symbol-disability" class="col1 symbol center round" title="Disability"><span class="maki-icon disability"></span></label>
+
+
+        <input id="marker-marker-symbol-telephone" class="label-select" data-geojson="marker-symbol.telephone" type="radio" name="marker-symbol" value="telephone">
+
+      <label for="marker-marker-symbol-telephone" class="col1 symbol center round" title="Telephone"><span class="maki-icon telephone"></span></label>
+
+
+        <input id="marker-marker-symbol-emergency-telephone" class="label-select" data-geojson="marker-symbol.emergency-telephone" type="radio" name="marker-symbol" value="emergency-telephone">
+
+      <label for="marker-marker-symbol-emergency-telephone" class="col1 symbol center round" title="Emergency Telephone"><span class="maki-icon emergency-telephone"></span></label>
+
+
+        <input id="marker-marker-symbol-toilets" class="label-select" data-geojson="marker-symbol.toilets" type="radio" name="marker-symbol" value="toilets">
+
+      <label for="marker-marker-symbol-toilets" class="col1 symbol center round" title="Toilets"><span class="maki-icon toilets"></span></label>
+
+
+        <input id="marker-marker-symbol-waste-basket" class="label-select" data-geojson="marker-symbol.waste-basket" type="radio" name="marker-symbol" value="waste-basket">
+
+      <label for="marker-marker-symbol-waste-basket" class="col1 symbol center round" title="Waste Basket"><span class="maki-icon waste-basket"></span></label>
+
+
+        <input id="marker-marker-symbol-music" class="label-select" data-geojson="marker-symbol.music" type="radio" name="marker-symbol" value="music">
+
+      <label for="marker-marker-symbol-music" class="col1 symbol center round" title="Music"><span class="maki-icon music"></span></label>
+
+
+        <input id="marker-marker-symbol-land-use" class="label-select" data-geojson="marker-symbol.land-use" type="radio" name="marker-symbol" value="land-use">
+
+      <label for="marker-marker-symbol-land-use" class="col1 symbol center round" title="Land Use"><span class="maki-icon land-use"></span></label>
+
+
+        <input id="marker-marker-symbol-city" class="label-select" data-geojson="marker-symbol.city" type="radio" name="marker-symbol" value="city">
+
+      <label for="marker-marker-symbol-city" class="col1 symbol center round" title="City"><span class="maki-icon city"></span></label>
+
+
+        <input id="marker-marker-symbol-town" class="label-select" data-geojson="marker-symbol.town" type="radio" name="marker-symbol" value="town">
+
+      <label for="marker-marker-symbol-town" class="col1 symbol center round" title="Town"><span class="maki-icon town"></span></label>
+
+
+        <input id="marker-marker-symbol-village" class="label-select" data-geojson="marker-symbol.village" type="radio" name="marker-symbol" value="village">
+
+      <label for="marker-marker-symbol-village" class="col1 symbol center round" title="Village"><span class="maki-icon village"></span></label>
+
+
+        <input id="marker-marker-symbol-farm" class="label-select" data-geojson="marker-symbol.farm" type="radio" name="marker-symbol" value="farm">
+
+      <label for="marker-marker-symbol-farm" class="col1 symbol center round" title="Farm"><span class="maki-icon farm"></span></label>
+
+
+        <input id="marker-marker-symbol-bakery" class="label-select" data-geojson="marker-symbol.bakery" type="radio" name="marker-symbol" value="bakery">
+
+      <label for="marker-marker-symbol-bakery" class="col1 symbol center round" title="Bakery"><span class="maki-icon bakery"></span></label>
+
+
+        <input id="marker-marker-symbol-dog-park" class="label-select" data-geojson="marker-symbol.dog-park" type="radio" name="marker-symbol" value="dog-park">
+
+      <label for="marker-marker-symbol-dog-park" class="col1 symbol center round" title="Dog Park"><span class="maki-icon dog-park"></span></label>
+
+
+        <input id="marker-marker-symbol-lighthouse" class="label-select" data-geojson="marker-symbol.lighthouse" type="radio" name="marker-symbol" value="lighthouse">
+
+      <label for="marker-marker-symbol-lighthouse" class="col1 symbol center round" title="Lighthouse"><span class="maki-icon lighthouse"></span></label>
+
+
+        <input id="marker-marker-symbol-clothing-store" class="label-select" data-geojson="marker-symbol.clothing-store" type="radio" name="marker-symbol" value="clothing-store">
+
+      <label for="marker-marker-symbol-clothing-store" class="col1 symbol center round" title="Clothing Store"><span class="maki-icon clothing-store"></span></label>
+
+
+        <input id="marker-marker-symbol-polling-place" class="label-select" data-geojson="marker-symbol.polling-place" type="radio" name="marker-symbol" value="polling-place">
+
+      <label for="marker-marker-symbol-polling-place" class="col1 symbol center round" title="Polling Place"><span class="maki-icon polling-place"></span></label>
+
+
+        <input id="marker-marker-symbol-playground" class="label-select" data-geojson="marker-symbol.playground" type="radio" name="marker-symbol" value="playground">
+
+      <label for="marker-marker-symbol-playground" class="col1 symbol center round" title="Playground"><span class="maki-icon playground"></span></label>
+
+
+        <input id="marker-marker-symbol-entrance" class="label-select" data-geojson="marker-symbol.entrance" type="radio" name="marker-symbol" value="entrance">
+
+      <label for="marker-marker-symbol-entrance" class="col1 symbol center round" title="Entrance"><span class="maki-icon entrance"></span></label>
+
+
+        <input id="marker-marker-symbol-heart" class="label-select" data-geojson="marker-symbol.heart" type="radio" name="marker-symbol" value="heart">
+
+      <label for="marker-marker-symbol-heart" class="col1 symbol center round" title="Heart"><span class="maki-icon heart"></span></label>
+
+
+        <input id="marker-marker-symbol-camera" class="label-select" data-geojson="marker-symbol.camera" type="radio" name="marker-symbol" value="camera">
+
+      <label for="marker-marker-symbol-camera" class="col1 symbol center round" title="Camera"><span class="maki-icon camera"></span></label>
+
+
+        <input id="marker-marker-symbol-laundry" class="label-select" data-geojson="marker-symbol.laundry" type="radio" name="marker-symbol" value="laundry">
+
+      <label for="marker-marker-symbol-laundry" class="col1 symbol center round" title="Laundry"><span class="maki-icon laundry"></span></label>
+
+
+        <input id="marker-marker-symbol-car" class="label-select" data-geojson="marker-symbol.car" type="radio" name="marker-symbol" value="car">
+
+      <label for="marker-marker-symbol-car" class="col1 symbol center round" title="Car"><span class="maki-icon car"></span></label>
+
+
+        <input id="marker-marker-symbol-suitcase" class="label-select" data-geojson="marker-symbol.suitcase" type="radio" name="marker-symbol" value="suitcase">
+
+      <label for="marker-marker-symbol-suitcase" class="col1 symbol center round" title="Suitcase"><span class="maki-icon suitcase"></span></label>
+
+
+        <input id="marker-marker-symbol-hairdresser" class="label-select" data-geojson="marker-symbol.hairdresser" type="radio" name="marker-symbol" value="hairdresser">
+
+      <label for="marker-marker-symbol-hairdresser" class="col1 symbol center round" title="Hairdresser"><span class="maki-icon hairdresser"></span></label>
+
+
+        <input id="marker-marker-symbol-chemist" class="label-select" data-geojson="marker-symbol.chemist" type="radio" name="marker-symbol" value="chemist">
+
+      <label for="marker-marker-symbol-chemist" class="col1 symbol center round" title="Chemist"><span class="maki-icon chemist"></span></label>
+
+
+        <input id="marker-marker-symbol-mobilephone" class="label-select" data-geojson="marker-symbol.mobilephone" type="radio" name="marker-symbol" value="mobilephone">
+
+      <label for="marker-marker-symbol-mobilephone" class="col1 symbol center round" title="Mobile phone"><span class="maki-icon mobilephone"></span></label>
+
+
+        <input id="marker-marker-symbol-scooter" class="label-select" data-geojson="marker-symbol.scooter" type="radio" name="marker-symbol" value="scooter">
+
+      <label for="marker-marker-symbol-scooter" class="col1 symbol center round" title="Scooter"><span class="maki-icon scooter"></span></label>
+
+
+        <input id="marker-marker-symbol-gift" class="label-select" data-geojson="marker-symbol.gift" type="radio" name="marker-symbol" value="gift">
+
+      <label for="marker-marker-symbol-gift" class="col1 symbol center round" title="Gift"><span class="maki-icon gift"></span></label>
+
+
+        <input id="marker-marker-symbol-ice-cream" class="label-select" data-geojson="marker-symbol.ice-cream" type="radio" name="marker-symbol" value="ice-cream">
+
+      <label for="marker-marker-symbol-ice-cream" class="col1 symbol center round" title="Ice cream"><span class="maki-icon ice-cream"></span></label>
+
+
+        <input id="marker-marker-symbol-0" class="label-select" data-geojson="marker-symbol.0" type="radio" name="marker-symbol" value="0">
+
+      <label for="marker-marker-symbol-0" class="col1 symbol center round"><span class="maki-icon strong alpha">0</span></label>
+
+
+        <input id="marker-marker-symbol-1" class="label-select" data-geojson="marker-symbol.1" type="radio" name="marker-symbol" value="1">
+
+      <label for="marker-marker-symbol-1" class="col1 symbol center round"><span class="maki-icon strong alpha">1</span></label>
+
+
+        <input id="marker-marker-symbol-2" class="label-select" data-geojson="marker-symbol.2" type="radio" name="marker-symbol" value="2">
+
+      <label for="marker-marker-symbol-2" class="col1 symbol center round"><span class="maki-icon strong alpha">2</span></label>
+
+
+        <input id="marker-marker-symbol-3" class="label-select" data-geojson="marker-symbol.3" type="radio" name="marker-symbol" value="3">
+
+      <label for="marker-marker-symbol-3" class="col1 symbol center round"><span class="maki-icon strong alpha">3</span></label>
+
+
+        <input id="marker-marker-symbol-4" class="label-select" data-geojson="marker-symbol.4" type="radio" name="marker-symbol" value="4">
+
+      <label for="marker-marker-symbol-4" class="col1 symbol center round"><span class="maki-icon strong alpha">4</span></label>
+
+
+        <input id="marker-marker-symbol-5" class="label-select" data-geojson="marker-symbol.5" type="radio" name="marker-symbol" value="5">
+
+      <label for="marker-marker-symbol-5" class="col1 symbol center round"><span class="maki-icon strong alpha">5</span></label>
+
+
+        <input id="marker-marker-symbol-6" class="label-select" data-geojson="marker-symbol.6" type="radio" name="marker-symbol" value="6">
+
+      <label for="marker-marker-symbol-6" class="col1 symbol center round"><span class="maki-icon strong alpha">6</span></label>
+
+
+  </div>
+
+    <div class="animate col12 clearfix row5">
+
+        <input id="marker-marker-symbol-7" class="label-select" data-geojson="marker-symbol.7" type="radio" name="marker-symbol" value="7">
+
+      <label for="marker-marker-symbol-7" class="col1 symbol center round"><span class="maki-icon strong alpha">7</span></label>
+
+
+        <input id="marker-marker-symbol-8" class="label-select" data-geojson="marker-symbol.8" type="radio" name="marker-symbol" value="8">
+
+      <label for="marker-marker-symbol-8" class="col1 symbol center round"><span class="maki-icon strong alpha">8</span></label>
+
+
+        <input id="marker-marker-symbol-9" class="label-select" data-geojson="marker-symbol.9" type="radio" name="marker-symbol" value="9">
+
+      <label for="marker-marker-symbol-9" class="col1 symbol center round"><span class="maki-icon strong alpha">9</span></label>
+
+
+        <input id="marker-marker-symbol-a" class="label-select" data-geojson="marker-symbol.a" type="radio" name="marker-symbol" value="a">
+
+      <label for="marker-marker-symbol-a" class="col1 symbol center round"><span class="maki-icon strong alpha">a</span></label>
+
+
+        <input id="marker-marker-symbol-b" class="label-select" data-geojson="marker-symbol.b" type="radio" name="marker-symbol" value="b">
+
+      <label for="marker-marker-symbol-b" class="col1 symbol center round"><span class="maki-icon strong alpha">b</span></label>
+
+
+        <input id="marker-marker-symbol-c" class="label-select" data-geojson="marker-symbol.c" type="radio" name="marker-symbol" value="c">
+
+      <label for="marker-marker-symbol-c" class="col1 symbol center round"><span class="maki-icon strong alpha">c</span></label>
+
+
+        <input id="marker-marker-symbol-d" class="label-select" data-geojson="marker-symbol.d" type="radio" name="marker-symbol" value="d">
+
+      <label for="marker-marker-symbol-d" class="col1 symbol center round"><span class="maki-icon strong alpha">d</span></label>
+
+
+        <input id="marker-marker-symbol-e" class="label-select" data-geojson="marker-symbol.e" type="radio" name="marker-symbol" value="e">
+
+      <label for="marker-marker-symbol-e" class="col1 symbol center round"><span class="maki-icon strong alpha">e</span></label>
+
+
+        <input id="marker-marker-symbol-f" class="label-select" data-geojson="marker-symbol.f" type="radio" name="marker-symbol" value="f">
+
+      <label for="marker-marker-symbol-f" class="col1 symbol center round"><span class="maki-icon strong alpha">f</span></label>
+
+
+        <input id="marker-marker-symbol-g" class="label-select" data-geojson="marker-symbol.g" type="radio" name="marker-symbol" value="g">
+
+      <label for="marker-marker-symbol-g" class="col1 symbol center round"><span class="maki-icon strong alpha">g</span></label>
+
+
+        <input id="marker-marker-symbol-h" class="label-select" data-geojson="marker-symbol.h" type="radio" name="marker-symbol" value="h">
+
+      <label for="marker-marker-symbol-h" class="col1 symbol center round"><span class="maki-icon strong alpha">h</span></label>
+
+
+        <input id="marker-marker-symbol-i" class="label-select" data-geojson="marker-symbol.i" type="radio" name="marker-symbol" value="i">
+
+      <label for="marker-marker-symbol-i" class="col1 symbol center round"><span class="maki-icon strong alpha">i</span></label>
+
+
+        <input id="marker-marker-symbol-j" class="label-select" data-geojson="marker-symbol.j" type="radio" name="marker-symbol" value="j">
+
+      <label for="marker-marker-symbol-j" class="col1 symbol center round"><span class="maki-icon strong alpha">j</span></label>
+
+
+        <input id="marker-marker-symbol-k" class="label-select" data-geojson="marker-symbol.k" type="radio" name="marker-symbol" value="k">
+
+      <label for="marker-marker-symbol-k" class="col1 symbol center round"><span class="maki-icon strong alpha">k</span></label>
+
+
+        <input id="marker-marker-symbol-l" class="label-select" data-geojson="marker-symbol.l" type="radio" name="marker-symbol" value="l">
+
+      <label for="marker-marker-symbol-l" class="col1 symbol center round"><span class="maki-icon strong alpha">l</span></label>
+
+
+        <input id="marker-marker-symbol-m" class="label-select" data-geojson="marker-symbol.m" type="radio" name="marker-symbol" value="m">
+
+      <label for="marker-marker-symbol-m" class="col1 symbol center round"><span class="maki-icon strong alpha">m</span></label>
+
+
+        <input id="marker-marker-symbol-n" class="label-select" data-geojson="marker-symbol.n" type="radio" name="marker-symbol" value="n">
+
+      <label for="marker-marker-symbol-n" class="col1 symbol center round"><span class="maki-icon strong alpha">n</span></label>
+
+
+        <input id="marker-marker-symbol-o" class="label-select" data-geojson="marker-symbol.o" type="radio" name="marker-symbol" value="o">
+
+      <label for="marker-marker-symbol-o" class="col1 symbol center round"><span class="maki-icon strong alpha">o</span></label>
+
+
+        <input id="marker-marker-symbol-p" class="label-select" data-geojson="marker-symbol.p" type="radio" name="marker-symbol" value="p">
+
+      <label for="marker-marker-symbol-p" class="col1 symbol center round"><span class="maki-icon strong alpha">p</span></label>
+
+
+        <input id="marker-marker-symbol-q" class="label-select" data-geojson="marker-symbol.q" type="radio" name="marker-symbol" value="q">
+
+      <label for="marker-marker-symbol-q" class="col1 symbol center round"><span class="maki-icon strong alpha">q</span></label>
+
+
+        <input id="marker-marker-symbol-r" class="label-select" data-geojson="marker-symbol.r" type="radio" name="marker-symbol" value="r">
+
+      <label for="marker-marker-symbol-r" class="col1 symbol center round"><span class="maki-icon strong alpha">r</span></label>
+
+
+        <input id="marker-marker-symbol-s" class="label-select" data-geojson="marker-symbol.s" type="radio" name="marker-symbol" value="s">
+
+      <label for="marker-marker-symbol-s" class="col1 symbol center round"><span class="maki-icon strong alpha">s</span></label>
+
+
+        <input id="marker-marker-symbol-t" class="label-select" data-geojson="marker-symbol.t" type="radio" name="marker-symbol" value="t">
+
+      <label for="marker-marker-symbol-t" class="col1 symbol center round"><span class="maki-icon strong alpha">t</span></label>
+
+
+        <input id="marker-marker-symbol-u" class="label-select" data-geojson="marker-symbol.u" type="radio" name="marker-symbol" value="u">
+
+      <label for="marker-marker-symbol-u" class="col1 symbol center round"><span class="maki-icon strong alpha">u</span></label>
+
+
+        <input id="marker-marker-symbol-v" class="label-select" data-geojson="marker-symbol.v" type="radio" name="marker-symbol" value="v">
+
+      <label for="marker-marker-symbol-v" class="col1 symbol center round"><span class="maki-icon strong alpha">v</span></label>
+
+
+        <input id="marker-marker-symbol-w" class="label-select" data-geojson="marker-symbol.w" type="radio" name="marker-symbol" value="w">
+
+      <label for="marker-marker-symbol-w" class="col1 symbol center round"><span class="maki-icon strong alpha">w</span></label>
+
+
+        <input id="marker-marker-symbol-x" class="label-select" data-geojson="marker-symbol.x" type="radio" name="marker-symbol" value="x">
+
+      <label for="marker-marker-symbol-x" class="col1 symbol center round"><span class="maki-icon strong alpha">x</span></label>
+
+
+        <input id="marker-marker-symbol-y" class="label-select" data-geojson="marker-symbol.y" type="radio" name="marker-symbol" value="y">
+
+      <label for="marker-marker-symbol-y" class="col1 symbol center round"><span class="maki-icon strong alpha">y</span></label>
+
+
+        <input id="marker-marker-symbol-z" class="label-select" data-geojson="marker-symbol.z" type="radio" name="marker-symbol" value="z">
+
+      <label for="marker-marker-symbol-z" class="col1 symbol center round"><span class="maki-icon strong alpha">z</span></label>
+
+
+  </div>
+
+</div>
+</body>
+</html>

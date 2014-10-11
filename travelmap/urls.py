@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^$', 'logbook.views.home', name='home'),
     url(r'^profile/$', 'logbook.views.profile', name='profile'),
     url(r'^add_journey/$', 'logbook.views.add_journey', name='add_journey'),
+    url(r'^my_journeys/$', 'logbook.views.my_journeys', name='my_journeys'),
     # User registration
     url(r'^register/$', 'logbook.views.register', name='register'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

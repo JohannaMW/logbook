@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'logbook',
     'storages',
-    'boto',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,19 +78,44 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+AWS_ACCESS_KEY_ID = "AKIAIM2TWT4MAXQVFMTQ"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
+# Use Amazon S3 for storage for uploaded media files.
 
-# DEFAULT_FILE_STORAGE = 'libs.storages.S3Storage.S3Storage'
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto.S3BotoStorage"
+
+# Use Amazon S3 and RequireJS for static files storage.
+
+STATICFILES_STORAGE = "require_s3.storage.OptimizedCachedStaticFilesStorage"
+
+# Amazon S3 settings.
 #
-# # Amazon S3 settings.
+AWS_SECRET_ACCESS_KEY = "+tRSN46eVMZ1SI1uzn7te5KXfrxuMddRovZ/1fWn"
 #
-# AWS_ACCESS_KEY_ID = os.environ.get("AKIAIM2TWT4MAXQVFMTQ")
-#
-# AWS_SECRET_ACCESS_KEY = os.environ.get("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")
-#
-# AWS_STORAGE_BUCKET_NAME = os.environ.get("myfirstbucket1503")
+AWS_STORAGE_BUCKET_NAME = "myfirstbucket1503"
+
+AWS_AUTO_CREATE_BUCKET = True
+
+AWS_HEADERS = {
+    "Cache-Control": "public, max-age=86400",
+}
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_QUERYSTRING_AUTH = False
+
+AWS_S3_SECURE_URLS = True
+
+AWS_REDUCED_REDUNDANCY = False
+
+AWS_IS_GZIPPED = False
+
+BOTO_S3_BUCKET = "myfirstbucket1503"
+
+STATIC_URL = "https://myfirstbucket1503.s3.amazonaws.com/".format(
+    bucket_name = AWS_STORAGE_BUCKET_NAME,
+)
 
 STATIC_URL = '/static/'
 

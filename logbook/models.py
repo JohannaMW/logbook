@@ -2,9 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 import urllib
 import json
+from django.db import models
+from django_boto.s3.storage import S3Storage
+
+s3 = S3Storage()
 
 class Journey(models.Model):
-    image = models.FileField(blank=True, null=True)
+    image = models.FileField(storage=s3, blank=True, null=True)
     summary = models.TextField()
     description = models.TextField()
     title = models.CharField(max_length=400)

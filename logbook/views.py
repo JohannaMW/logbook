@@ -8,6 +8,10 @@ import json
 def home(request):
     return render(request, 'home.html', {})
 
+def my_journeys(request):
+    journeys = Journey.objects.filter(user=request.user)
+    return render(request, 'my_journeys.html', {'journeys':journeys})
+
 def profile(request):
     journeys = Journey.objects.filter(user=request.user)
     return render(request, 'profile.html', {'journeys':journeys})

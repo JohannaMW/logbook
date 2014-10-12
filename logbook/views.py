@@ -22,8 +22,10 @@ def add_journey(request):
     if request.method == 'POST':
         form = JourneyForm(request.POST, request.FILES)
         if form.is_valid():
-             if form.save():
-                return redirect("profile")
+            new_journey = form.save()
+            new_journey.user = request.user
+            new_journey.save()
+            return redirect("/profile/")
     else:
         form = JourneyForm()
     data = {"form": form}
@@ -35,13 +37,13 @@ def edit_journey(request, journey_id):
         form = JourneyForm(request.POST, request.FILES, instance=journey)
         if form.is_valid():
              if form.save():
-                return redirect("/journey/{}".format(journey_id))
+                return redirect("/journeys/{}".format(journey_id))
     else:
         form = JourneyForm(instance=journey)
     data = {"form": form}
     return render(request, "edit_journey.html", data)
 
-def delete_journey(request, journey_id):
+def remove_journey(request, journey_id):
     journey = Journey.objects.get(id=journey_id)
     journey.delete()
     return redirect("/journeys")

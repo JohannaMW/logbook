@@ -10,13 +10,12 @@
 <button class="glyphicon glyphicon-star">Star</button>
 <button class="glyphicon glyphicon-map-marker">Marker</button>
 <button class="glyphicon glyphicon-plane">Airport</button>
-<button class="glyphicon glyphicon-tree-conifer">Tree</button>
-<button class="glyphicon glyphicon-tree-deciduous">Tree2</button>
+<button class="glyphicon glyphicon-tree-conifer">Park</button>
+<button class="glyphicon glyphicon-tree-deciduous">Park2</button>
 <button class="glyphicon glyphicon-cutlery">Restaurant</button>
-    <form method="post" action="">
+    <form enctype="multipart/form-data" method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-
         <input type="submit" value="Add Journey">
     </form>
 

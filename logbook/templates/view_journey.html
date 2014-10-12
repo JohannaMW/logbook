@@ -1,5 +1,27 @@
 {% extends "base_template.html" %}
 
 {% block content %}
+    {% if journey.main_image %}
+<img src="{{ url }}{{ journey.main_image }}" width="200px" height="300px">
+    {% endif %}
 {{ journey.title }}
+{{ journey.city }}, {{ journey.city }}
+{{ journey.description }}
+    {% if journey.image_1  %}
+<img src="{{ url }}{{ journey.image_1 }}" width="100px" height="100px">
+    {%  endif %}
+    {% if journey.image_2  %}
+    <img src="{{ url }}{{ journey.image_2 }}" width="100px" height="100px">
+    {% endif %}
+    {% if journey.image_3  %}
+    <img src="{{ url }}{{ journey.image_3 }}" width="100px" height="100px">
+    {% endif %}
+    {% if journey.image_4  %}
+    <img src="{{ url }}{{ journey.image_4 }}" width="100px" height="100px">
+    {% endif %}
+    {% if journey.image_5  %}
+    <img src="{{ url }}{{ journey.image_5 }}" width="100px" height="100px">
+    {% endif %}
+
+
 {% endblock %}

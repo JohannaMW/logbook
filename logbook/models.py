@@ -7,7 +7,7 @@ from django_boto.s3.storage import S3Storage
 
 
 class Journey(models.Model):
-    main_image = models.ImageField(upload_to='photos', blank=True, null=True)
+    main_image = models.ImageField(upload_to='photos')
     image_1 = models.ImageField(upload_to='photos', blank=True, null=True)
     image_2 = models.ImageField(upload_to='photos', blank=True, null=True)
     image_3 = models.ImageField(upload_to='photos', blank=True, null=True)
@@ -16,9 +16,11 @@ class Journey(models.Model):
     summary = models.TextField()
     description = models.TextField()
     title = models.CharField(max_length=400)
+    from_date = models.DateField(blank=True, null=True)
+    to_date = models.DateField(blank=True, null=True)
     country = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
-    user = models.ForeignKey(User, related_name="journeys")
+    user = models.ForeignKey(User, related_name="journeys", blank=True, null=True)
     latitude = models.DecimalField(max_digits=18, decimal_places=10, null=True, blank=True)
     longitude = models.DecimalField(max_digits=18, decimal_places=10, null=True, blank=True)
     marker_symbol = models.CharField(max_length=20, blank=True, null=True)

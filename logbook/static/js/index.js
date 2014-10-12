@@ -1,6 +1,5 @@
 $(document).ready(function() {
-var selectedColor= "bla";
-var imageFields = ["id_image_1", "id_image_2", "id_image_3", "id_image_4", "id_image_5"];
+var selectedColor= "";
 var definedColors = [
         "#f1f075",
         "#eaf7ca",
@@ -93,5 +92,5 @@ var definedColors = [
     prepColorPicker();
     selectColor();
     selectImage();
-    hideImageFields();
+   // hideImageFields();
 });

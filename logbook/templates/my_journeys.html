@@ -4,6 +4,6 @@
 
 <h1>You've been around {{ request.username}}</h1>
     {% for journey in journeys %}
-        <img src="{{ journey.image.url }}">
+        <img src="{{ url }}{{ journey.image }}" width="100px" height="100px">
     {% endfor %}
 {% endblock %}

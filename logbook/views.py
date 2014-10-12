@@ -10,11 +10,13 @@ def home(request):
 
 def my_journeys(request):
     journeys = Journey.objects.filter(user=request.user)
-    return render(request, 'my_journeys.html', {'journeys':journeys})
+    url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
+    return render(request, 'my_journeys.html', {'journeys':journeys, 'url':url})
 
 def profile(request):
     journeys = Journey.objects.filter(user=request.user)
-    return render(request, 'profile.html', {'journeys':journeys})
+    url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
+    return render(request, 'profile.html', {'journeys':journeys, 'url':url})
 
 def add_journey(request):
     if request.method == 'POST':
@@ -26,6 +28,28 @@ def add_journey(request):
         form = JourneyForm()
     data = {"form": form}
     return render(request, "add_journey.html", data)
+
+def edit_journey(request, journey_id):
+    journey = Journey.objects.get(id=journey_id)
+    if request.method == 'POST':
+        form = JourneyForm(request.POST, request.FILES, instance=journey)
+        if form.is_valid():
+             if form.save():
+                return redirect("/journey/{}".format(journey_id))
+    else:
+        form = JourneyForm(instance=journey)
+    data = {"form": form}
+    return render(request, "edit_journey.html", data)
+
+def delete_journey(request, journey_id):
+    journey = Journey.objects.get(id=journey_id)
+    journey.delete()
+    return redirect("/journeys")
+
+def view_journey(request, journey_id):
+    journey = Journey.objects.get(id=journey_id)
+    url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
+    return render(request, 'view_journey.html', {'journey':journey, 'url':url})
 
 # Registration
 def register(request):

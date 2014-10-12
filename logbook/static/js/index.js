@@ -1,6 +1,7 @@
 $(document).ready(function() {
-var currentColor = "";
-    var definedColors = [
+var selectedColor= "bla";
+var imageFields = ["id_image_1", "id_image_2", "id_image_3", "id_image_4", "id_image_5"];
+var definedColors = [
         "#f1f075",
         "#eaf7ca",
         "#c5e967",
@@ -26,26 +27,71 @@ var currentColor = "";
         "#1f1f1f"
     ];
 
-    var addColorBox = function(color){
-        $('#colors').append(
-            '<div class="color_choice" style="background-color:' + color + '"></div>'
-        )
+    var selectColor = function() {
+        $('body').on('click', '.color_choice', function (e) {
+            console.log("you have clicked it!");
+            selectedColor = $(e.target).css('background-color');
+            var hexColor = rgb2hex(selectedColor);
+            $("#id_marker_color").val(hexColor);
+            console.log(hexColor);
+        });
     };
 
+    var selectImage = function() {
+        $('button').on('click', function () {
+            console.log("you have clicked the button!");
+            var selectedImage = $(this).text();
+            var symbol = selectedImage.toLowerCase();
+            $("#id_marker_symbol").val(symbol);
+            console.log(symbol);
+        });
+    };
+
+    var hideFormFields = function () {
+
+    };
+
+  /*  var hideImageFields = function () {
+        for (var i=0; i< imageFields.length; i++) {
+            console.log(imageFields[i]);
+            $('#'+imageFields[i]).hide();
+            $("label[for=" + imageFields[i] + "]").hide();
+
+        }
+    };
+
+    var fileUpload = function () {
+        $("input:image").on('change', function () {
+            var index = $(this).index();
+            console.log(index);
+            $('#'+index+1).show();
+        });
+
+    };*/
+
+    var addColorBox = function (color) {
+        // render color fields
+        $('#colors').append(
+                '<div class="color_choice" style="background-color:' + color + '"></div>'
+        )};
 
 
-    var prepCanvas = function(){
+    var prepColorPicker = function(){
         for (var i=0; i<definedColors.length; i++) {
-            // Add each pre-defined color to the page
             addColorBox(definedColors[i]);
         };
     };
 
-     var selectColor = function(){
-        $('body').on('click', '.color_choice', function(e){
-            currentColor = $(e.target).css('background-color');
+    function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
 
-        });
-    };
-    prepCanvas();
+    prepColorPicker();
+    selectColor();
+    selectImage();
+    hideImageFields();
 });

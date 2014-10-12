@@ -30,10 +30,10 @@ L.mapbox.featureLayer({
     },
     properties: {
         title: "{{ journey.title }}",
-        description: '{{ journey.description }}',
+        description: '{{ journey.description }} <img src="{{ url }}{{ journey.image }}" width="100px" height="100px">',
         'marker-size': 'large',
-        'marker-color': '#BE9A6B',
-        'marker-symbol': 'star'
+        'marker-color': '#1087bf',
+        'marker-symbol': 'park2'
     }
 }).addTo(map);
 {% endfor %}

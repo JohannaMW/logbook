@@ -6,8 +6,11 @@ from django.conf.urls.static import static
 urlpatterns = patterns('',
     url(r'^$', 'logbook.views.home', name='home'),
     url(r'^profile/$', 'logbook.views.profile', name='profile'),
-    url(r'^add_journey/$', 'logbook.views.add_journey', name='add_journey'),
-    url(r'^my_journeys/$', 'logbook.views.my_journeys', name='my_journeys'),
+    url(r'^journeys/$', 'logbook.views.my_journeys', name='my_journeys'),
+    url(r'^journeys/add/$', 'logbook.views.add_journey', name='add_journey'),
+    url(r'^journeys/(?P<journey_id>\w+)/$', 'logbook.views.view_journey', name='view_journey'),
+    url(r'^journeys/(?P<journey_id>\w+)/edit/$', 'logbook.views.edit_journey', name='edit_journey'),
+    url(r'^journeys/(?P<journey_id>\w+)/remove/$', 'logbook.views.remove_journey', name='remove_journey'),
     # User registration
     url(r'^register/$', 'logbook.views.register', name='register'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

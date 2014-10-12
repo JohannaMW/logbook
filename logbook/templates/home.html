@@ -1,7 +1,61 @@
-{% extends "base_template.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<link rel="stylesheet" type="text/css" href='/static/css/style.css'>
+<link rel="stylesheet" type="text/css" href="/static/css/reset.min.css/"
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/static/js/index.js"></script>
+<link rel="stylesheet" href="/static/css/mfglabs_iconset.css">
+<link href='http://fonts.googleapis.com/css?family=Poiret+One|Josefin+Sans:300|Josefin+Slab|Dancing+Script|Playball|Special+Elite' rel='stylesheet' type='text/css'>
+    <title>Home</title>
+</head>
+<div style="background-image: url('https://unsplash.imgix.net/45/eDLHCtzRR0yfFtU0BQar_sylwiabartyzel_themap.jpg?q=75&fm=jpg&auto=format&s=98e65d0d3f8fcc55b075259021149508');">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
 
-{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col-lg-6 col-lg-offset-3"> <div class="jumbotron">
+        <h1>Explore.</h1>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Start your journey today</a></p>
+    </div></div>
+    <div class="col-lg-4"></div>
+    </div>
+</div>
+    </div>
+ <div class=" page-container-full" style="margin-top: 100px;">
+  <div class="page-container page-container-fixed">
 
-<h1>Home</h1>
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-3" style="margin-bottom: 20px;">
+            <img class="img-circle" src="/static/img/map-screen-shot.png" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+            </div>
+        <div class="col-lg-3 home" style="margin-top: 40px;">
+        Save your memories. Keep track of the places you have been. Enjoy them anywhere. Anytime.
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-3">
+            <img class="img-circle" src="/static/img/travel.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        </div>
+          <div class="col-lg-2">
+            <img class="img-circle" src="/static/img/bus.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        </div>
+          <div class="col-lg-2">
+            <img class="img-circle" src="/static/img/motel.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+        </div>
+    </div>
+   </div>
+     </div>
+     <div class=" page-container-full">
 
-{% endblock %}
+     </div>
+</html>

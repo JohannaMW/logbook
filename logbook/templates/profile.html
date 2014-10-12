@@ -16,7 +16,7 @@
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiaGFubmEzNDM0MyIsImEiOiJzOFVtNXFVIn0.4STR7ZKukBpKJUXxwqKGzg';
-var map = L.mapbox.map('map', 'hanna34343.jni0cknp');
+var map = L.mapbox.map('map', 'hanna34343.jni0cknp').setView([13.404954, 52.520007], 2);;
 
 {% for journey in journeys %}
 L.mapbox.featureLayer({

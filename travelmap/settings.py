@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'logbook',
     'storages',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (

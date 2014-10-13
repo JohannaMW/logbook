@@ -8,17 +8,9 @@
 
 {% block content %}
     <script src="/static/js/index.js"></script>
- <span style="float:right;">
-    {% if user.is_authenticated %}
-        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
-         <a href="{% url 'profile' %}">My Map</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-</span>
-    <legend>You've been around {{ request.username }}</legend>
+
     {% for journey in journeys %}
-    <div class="row" style="margin-top: 50px">
+    <div class="row jumbotron" style="margin-top: 50px">
         <div class="col-lg-2 col-lg-offset-2">
             <img class="img-circle" src="{{ url }}{{ journey.main_image }}" style="width: 140px; height: 140px;">
             </div>
@@ -28,8 +20,9 @@
         </div>
     <div class="col-lg-4" >
         <ul>
-            <li><a href="{% url 'edit_journey' journey.id %}">Edit</a></li>
-            <li><a href="{% url 'remove_journey' journey.id %}">Remove</a></li>
+                        <a href="{% url 'view_journey' journey.id %}"><button type="button" class="btn btn-primary navbar-btn">View</button></a>
+            <a href="{% url 'edit_journey' journey.id %}"><button type="button" class="btn btn-warning navbar-btn">Edit</button></a>
+           <a href="{% url 'remove_journey' journey.id %}"><button type="button" class="btn btn-default navbar-btn">Remove</button></a>
         </ul>
         </div>
         </div>

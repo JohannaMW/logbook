@@ -13,19 +13,27 @@
     <title>Home</title>
 </head>
 <div style="background-image: url('https://unsplash.imgix.net/45/eDLHCtzRR0yfFtU0BQar_sylwiabartyzel_themap.jpg?q=75&fm=jpg&auto=format&s=98e65d0d3f8fcc55b075259021149508');">
-     <span style="float:right;">
-    {% if user.is_authenticated %}
-        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
-         <a href="{% url 'profile' %}">My Map</a>
+   <div>
+<ul class="nav nav-pills" style="float: right;">
+  {% if user.is_authenticated %}
+        <li><a href="{% url 'home'%}">Home</a></li>
+       <li><a href="{% url 'my_journeys' %}">My Journeys</a></li>
+      <li><a href="{% url 'profile' %}">My Map</a></li>
+      <li><a href="{% url 'add_journey' %}">Add a journey</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
     {% else %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+      <li><a href="{% url 'home' %}">Home</a></li>
+       <li><a href="{% url 'login' %}">Login</a></li>
+      <li><a href="{% url 'register' %}">Register</a></li>
     {% endif %}
-</span>
+</ul>
+</div>
     <div class="container">
     <div class="row" style="margin-top: 100px;">
-    <div class="col-lg-6 col-lg-offset-3"> <div class="jumbotron">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="jumbotron">
         <h1>Explore.</h1>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Start your journey today</a></p>
+        <p><a class="btn btn-lg btn-success" href="{% url 'register' %}" role="button">Start your journey today</a></p>
     </div></div>
     <div class="col-lg-4"></div>
     </div>

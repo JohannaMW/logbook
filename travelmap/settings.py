@@ -120,6 +120,8 @@ STATIC_URL = "https://myfirstbucket1503.s3.amazonaws.com/".format(
 
 LOGIN_REDIRECT_URL = 'profile'
 
+LOGIN_URL = 'login'
+
 STATIC_URL = '/static/'
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))

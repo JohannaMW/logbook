@@ -1,6 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.views.decorators.csrf import csrf_exempt
 from logbook.forms import TravellerForm, JourneyForm
 from logbook.models import Journey
 import json
@@ -8,16 +8,19 @@ import json
 def home(request):
     return render(request, 'home.html', {})
 
+@login_required
 def my_journeys(request):
     journeys = Journey.objects.filter(user=request.user)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
     return render(request, 'my_journeys.html', {'journeys':journeys, 'url':url})
 
+@login_required
 def profile(request):
     journeys = Journey.objects.filter(user=request.user)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
     return render(request, 'profile.html', {'journeys':journeys, 'url':url})
 
+@login_required
 def add_journey(request):
     if request.method == 'POST':
         form = JourneyForm(request.POST, request.FILES)
@@ -31,6 +34,7 @@ def add_journey(request):
     data = {"form": form}
     return render(request, "add_journey.html", data)
 
+@login_required
 def edit_journey(request, journey_id):
     journey = Journey.objects.get(id=journey_id)
     if request.method == 'POST':
@@ -43,11 +47,13 @@ def edit_journey(request, journey_id):
     data = {"form": form}
     return render(request, "edit_journey.html", data)
 
+@login_required
 def remove_journey(request, journey_id):
     journey = Journey.objects.get(id=journey_id)
     journey.delete()
     return redirect("/journeys")
 
+@login_required
 def view_journey(request, journey_id):
     journey = Journey.objects.get(id=journey_id)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"

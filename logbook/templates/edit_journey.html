@@ -1,23 +1,47 @@
 {% extends "base_template.html" %}
+{% load bootstrap_tags %}
+
 {% block header %}
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 {% endblock %}
 
 {% block content %}
-<script src="/static/js/index.js"></script>
+    <script src="/static/js/index.js"></script>
+ <span style="float:right;">
+    {% if user.is_authenticated %}
+        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
+         <a href="{% url 'profile' %}">My Map</a> | <a href="{% url 'add_journey' %}">Add a journey</a>
+    {% else %}
+       <a href="{% url 'home' %}">Home</a> | <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</span>
+    <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 jumbotron" style="margin-bottom: 20px;">
+    <form enctype="multipart/form-data" method="post" action="">
+    <legend>Edit your Journey</legend>
+        {% csrf_token %}
+        {{ form|as_bootstrap }}
+        <input type="submit" value="Add Journey">
+    </form>
+        </div>
+    </div>
 
+        <div class="row">
+    <div class="col-lg-6 col-lg-offset-3" style="margin-bottom: 20px;">
+        <legend>Customize your pointer</legend>
 <div id="colors"></div>
+ <div>
 <button class="glyphicon glyphicon-star">Star</button>
 <button class="glyphicon glyphicon-map-marker">Marker</button>
 <button class="glyphicon glyphicon-plane">Airport</button>
-<button class="glyphicon glyphicon-tree-conifer">Tree</button>
-<button class="glyphicon glyphicon-tree-deciduous">Tree2</button>
+<button class="glyphicon glyphicon-tree-conifer">Park</button>
+<button class="glyphicon glyphicon-tree-deciduous">Park2</button>
 <button class="glyphicon glyphicon-cutlery">Restaurant</button>
-    <form enctype="multipart/form-data" method="post" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
+        </div>
+        </div>
+        </div>
+</div>
 
-        <input type="submit" value="Edit Journey">
-    </form>
 
 {% endblock %}

@@ -13,10 +13,21 @@
 </head>
 <body>
 
+<div class="row" style="float:right;">
+<div class="col-lg-12">
+    {% if user.is_authenticated %}
+        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
+         <a href="{% url 'profile' %}">My Map</a> | <a href="{% url 'add_journey' %}">Add a journey</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</div>
+</div>
+
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiaGFubmEzNDM0MyIsImEiOiJzOFVtNXFVIn0.4STR7ZKukBpKJUXxwqKGzg';
-var map = L.mapbox.map('map', 'hanna34343.jni0cknp').setView([13.404954, 52.520007], 2);;
+var map = L.mapbox.map('map', 'hanna34343.jni0cknp').setView([13.404954, 52.520007], 2);
 
 {% for journey in journeys %}
 L.mapbox.featureLayer({

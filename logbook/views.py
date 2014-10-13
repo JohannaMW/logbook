@@ -28,7 +28,7 @@ def add_journey(request):
             new_journey = form.save()
             new_journey.user = request.user
             new_journey.save()
-            return redirect("/profile/")
+            return redirect("/map/")
     else:
         form = JourneyForm()
     data = {"form": form}
@@ -71,7 +71,7 @@ def register(request):
             if user:
                 if user.is_active:
                     login(request, user)
-                    return redirect("profile")
+                    return redirect("map")
     else:
         form = TravellerForm()
 

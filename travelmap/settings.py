@@ -118,7 +118,7 @@ STATIC_URL = "https://myfirstbucket1503.s3.amazonaws.com/".format(
     bucket_name = AWS_STORAGE_BUCKET_NAME,
 )
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'map'
 
 LOGIN_URL = 'login'
 

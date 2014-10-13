@@ -37,7 +37,7 @@ L.mapbox.featureLayer({
         ]
     },
     properties: {
-        title: "<a href='{% url 'view_journey' journey.id %}'>{{ journey.title }}</a>",
+        title: '{{ journey.title }}',
         description: '{{ journey.summary }} <img src="{{ url }}{{ journey.main_image }}" width="100px" height="100px">',
 
         'marker-size': 'large',

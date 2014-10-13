@@ -11,14 +11,7 @@
   #map { position:absolute; top:0; bottom:0; width:100%; }
 </style>
 </head>
-<div>
-    {% if user.is_authenticated %}
-        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
-         <a href="{% url 'profile' %}">My Map</a> | <a href="{% url 'add_journey' %}">Add a journey</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-</div>
+
 <body>
 
 <div id='map'></div>

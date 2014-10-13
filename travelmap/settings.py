@@ -79,7 +79,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-AWS_ACCESS_KEY_ID = "AKIAIM2TWT4MAXQVFMTQ"
+AWS_ACCESS_KEY_ID = "AKIAJYQSLCX3BEQPI4VA"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 # Use Amazon S3 for storage for uploaded media files.
@@ -92,7 +92,7 @@ STATICFILES_STORAGE = "require_s3.storage.OptimizedCachedStaticFilesStorage"
 
 # Amazon S3 settings.
 #
-AWS_SECRET_ACCESS_KEY = "+tRSN46eVMZ1SI1uzn7te5KXfrxuMddRovZ/1fWn"
+AWS_SECRET_ACCESS_KEY = "rDbKB1hEVW1DX9qky/008kmJQIMG/Q5znyxPwAKT"
 #
 AWS_STORAGE_BUCKET_NAME = "myfirstbucket1503"
 
@@ -143,7 +143,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
+# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )

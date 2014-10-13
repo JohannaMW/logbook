@@ -68,7 +68,7 @@ def register(request):
             password = request.POST["password1"]
             form.save()
             user = authenticate(username=username, password=password)
-            if user is not None:
+            if user:
                 if user.is_active:
                     login(request, user)
                     return redirect("profile")

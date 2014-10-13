@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     url(r'^$', 'logbook.views.home', name='home'),
-    url(r'^profile/$', 'logbook.views.profile', name='profile'),
+    url(r'^map/$', 'logbook.views.map', name='map'),
     url(r'^journeys/$', 'logbook.views.my_journeys', name='my_journeys'),
     url(r'^journeys/add/$', 'logbook.views.add_journey', name='add_journey'),
     url(r'^journeys/(?P<journey_id>\w+)/$', 'logbook.views.view_journey', name='view_journey'),

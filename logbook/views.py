@@ -15,10 +15,10 @@ def my_journeys(request):
     return render(request, 'my_journeys.html', {'journeys':journeys, 'url':url})
 
 @login_required
-def profile(request):
+def map(request):
     journeys = Journey.objects.filter(user=request.user)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
-    return render(request, 'profile_2.html', {'journeys':journeys, 'url':url})
+    return render(request, 'map.html', {'journeys':journeys, 'url':url})
 
 @login_required
 def add_journey(request):

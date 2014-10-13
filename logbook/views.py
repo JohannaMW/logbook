@@ -18,7 +18,7 @@ def my_journeys(request):
 def profile(request):
     journeys = Journey.objects.filter(user=request.user)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
-    return render(request, 'profile.html', {'journeys':journeys, 'url':url})
+    return render(request, 'profile_2.html', {'journeys':journeys, 'url':url})
 
 @login_required
 def add_journey(request):

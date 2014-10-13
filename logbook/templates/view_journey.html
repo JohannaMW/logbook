@@ -27,21 +27,25 @@
     <div class="row">
     <div class="col-lg-8 col-lg-offset-2" style="margin-top: 50px;">
     {% if journey.image_1  %}
-    <img src="{{ url }}{{ journey.image_1 }}" class="img-circle" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_1 }}" class="img-circle" width="200px" height="200px">
     {%  endif %}
     {% if journey.image_2  %}
-    <img src="{{ url }}{{ journey.image_2 }}" class="img-circle" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_2 }}" class="img-circle" width="200px" height="200px">
     {% endif %}
     {% if journey.image_3  %}
-    <img src="{{ url }}{{ journey.image_3 }}" class="img-circle" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_3 }}" class="img-circle" width="200px" height="200px">
     {% endif %}
     {% if journey.image_4  %}
-    <img src="{{ url }}{{ journey.image_4 }}" class="img-circle" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_4 }}" class="img-circle" width="200px" height="200px">
     {% endif %}
     {% if journey.image_5  %}
-    <img src="{{ url }}{{ journey.image_5 }}" class="img-circle" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_5 }}" class="img-circle" width="200px" height="200px">
     {% endif %}
-    <a href="{% url 'edit_journey' journey.id %}">Edit</a> | <a href="{% url 'remove_journey' journey.id %}">Remove</a>
+    <br>
+    <div style="float:right;">
+     <a href="{% url 'edit_journey' journey.id %}"><button type="button" class="btn btn-warning navbar-btn">Edit</button></a>
+     <a href="{% url 'remove_journey' journey.id %}"><button type="button" class="btn btn-default navbar-btn">Remove</button></a>
+    </div>
     </div>
     </div>
 

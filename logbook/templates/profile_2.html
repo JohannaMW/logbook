@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base_template.html" %}
+    {% block header %}
 <meta charset=utf-8 />
 <title>A simple map</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.2/mapbox.css' rel='stylesheet' />
-<style>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
 </style>
-</head>
-<div>
-    {% if user.is_authenticated %}
-        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
-         <a href="{% url 'profile' %}">My Map</a> | <a href="{% url 'add_journey' %}">Add a journey</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-</div>
-<body>
+    {% endblock header %}
+
+{% block content %}
 
 <div id='map'></div>
 <script>
@@ -37,8 +31,8 @@ L.mapbox.featureLayer({
         ]
     },
     properties: {
-        title: "<a href='{% url 'view_journey' journey.id %}'>{{ journey.title }}</a>",
-        description: '{{ journey.summary }} <img src="{{ url }}{{ journey.main_image }}" width="100px" height="100px">',
+        title: "{{ journey.title }}",
+        description: '{{ journey.description }} <img src="{{ url }}{{ journey.main_image }}" width="100px" height="100px">',
 
         'marker-size': 'large',
         'marker-color': '{{ journey.marker_color }}',
@@ -48,5 +42,4 @@ L.mapbox.featureLayer({
 {% endfor %}
 </script>
 
-</body>
-</html>l>
+{% endblock content %}

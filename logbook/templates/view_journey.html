@@ -1,27 +1,61 @@
 {% extends "base_template.html" %}
 
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+{% endblock %}
+
 {% block content %}
+        <script src="/static/js/index.js"></script>
+ <span style="float:right;">
+    {% if user.is_authenticated %}
+        {{ user.username }} |  <a href="{% url 'logout' %}">Logout</a> |  <a href="{% url 'my_journeys' %}">My Journeys</a> |
+         <a href="{% url 'profile' %}">My Map</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</span>
+
+    <div class="row" style="margin-top:100px; ">
+    <div class="col-lg-2 col-lg-offset-2">
     {% if journey.main_image %}
 <img src="{{ url }}{{ journey.main_image }}" width="200px" height="300px">
     {% endif %}
-{{ journey.title }}
-{{ journey.city }}, {{ journey.city }}
-{{ journey.description }}
+    </div>
+    <div class="col-lg-4">
+<legend>{{ journey.title }}</legend>
+<p>{{ journey.city }}, {{ journey.city }}</p>
+{{ journey.summary }}
+    </div>
+    </div>
+     <div class="row">
+    <div class="col-lg-8 col-lg-offset-2" style="margin-top: 50px;">
+        {{ journey.description }}
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2" style="margin-top: 50px;">
     {% if journey.image_1  %}
-<img src="{{ url }}{{ journey.image_1 }}" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_1 }}" class="img-circle" width="100px" height="100px">
     {%  endif %}
     {% if journey.image_2  %}
-    <img src="{{ url }}{{ journey.image_2 }}" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_2 }}" class="img-circle" width="100px" height="100px">
     {% endif %}
     {% if journey.image_3  %}
-    <img src="{{ url }}{{ journey.image_3 }}" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_3 }}" class="img-circle" width="100px" height="100px">
     {% endif %}
     {% if journey.image_4  %}
-    <img src="{{ url }}{{ journey.image_4 }}" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_4 }}" class="img-circle" width="100px" height="100px">
     {% endif %}
     {% if journey.image_5  %}
-    <img src="{{ url }}{{ journey.image_5 }}" width="100px" height="100px">
+    <img src="{{ url }}{{ journey.image_5 }}" class="img-circle" width="100px" height="100px">
     {% endif %}
-
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-8 col-lg-offset-2" style="margin-top: 50px;">
+    <a href="{% url 'edit_journey' journey.id %}">Edit</a> | <a href="{% url 'remove_journey' journey.id %}">Remove</a>
+    </div>
+    </div>
 
 {% endblock %}

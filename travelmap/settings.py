@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'logbook',
     'storages',
-    'bootstrap3',
+    'django_forms_bootstrap',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,6 +117,8 @@ BOTO_S3_BUCKET = "myfirstbucket1503"
 STATIC_URL = "https://myfirstbucket1503.s3.amazonaws.com/".format(
     bucket_name = AWS_STORAGE_BUCKET_NAME,
 )
+
+LOGIN_REDIRECT_URL = 'profile'
 
 STATIC_URL = '/static/'
 

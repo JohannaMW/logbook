@@ -27,9 +27,8 @@ class Journey(models.Model):
     marker_color = models.CharField(max_length=20, blank=True, null=True)
 
     def save(self):
-        location = "{}, {}".format(self.city, self.country)
-
         if not self.latitude or not self.longitude:
+            location = "{}, {}".format(self.city, self.country)
             self.latitude, self.longitude = self.geocode(location)
 
         super(Journey, self).save()
@@ -37,10 +36,12 @@ class Journey(models.Model):
     def geocode(self, location):
         location = urllib.quote_plus(location)
         request = "http://maps.googleapis.com/maps/api/geocode/json?address={}&sensor=false".format(location)
+        # should use the requests library instead of urllib to make web calls
         data = json.loads(urllib.urlopen(request).read())
 
         if data['status'] == 'OK':
-            latitude = data['results'][0]['geometry']['location']['lat']
-            longitude = data['results'][0]['geometry']['location']['lng']
+            location_data = data['results'][0]['geometry']['location']
+            latitude = location_data['lat']
+            longitude = location_data['lng']
             return latitude, longitude
 

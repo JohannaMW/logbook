@@ -10,12 +10,16 @@ def home(request):
 
 @login_required
 def my_journeys(request):
+    # should be able to just do request.user.journeys do to the related_name you have set up
     journeys = Journey.objects.filter(user=request.user)
+    # Should this URL just be in a setting? seems redundant to include this in a lot of the views
+    # Would be annoying to replace if this changes
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
     return render(request, 'my_journeys.html', {'journeys':journeys, 'url':url})
 
 @login_required
 def map(request):
+    # should be able to just do request.user.journeys do to the related_name you have set up
     journeys = Journey.objects.filter(user=request.user)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
     return render(request, 'map.html', {'journeys':journeys, 'url':url})
@@ -25,7 +29,9 @@ def add_journey(request):
     if request.method == 'POST':
         form = JourneyForm(request.POST, request.FILES)
         if form.is_valid():
-            new_journey = form.save()
+            # Adding commit = False will make it so it does not try to save it
+            # This will let you make the user field required again on your Journey model
+            new_journey = form.save(commit=False)
             new_journey.user = request.user
             new_journey.save()
             return redirect("/map/")
@@ -55,6 +61,7 @@ def remove_journey(request, journey_id):
 
 @login_required
 def view_journey(request, journey_id):
+    # What happens if someone inputs a bad journey_id?
     journey = Journey.objects.get(id=journey_id)
     url = "https://s3-us-west-2.amazonaws.com/myfirstbucket1503/"
     return render(request, 'view_journey.html', {'journey':journey, 'url':url})
@@ -64,14 +71,14 @@ def register(request):
     if request.method == 'POST':
         form = TravellerForm(request.POST)
         if form.is_valid():
+            # should use form.cleaned_data["username"]
             username = request.POST["username"]
             password = request.POST["password1"]
             form.save()
             user = authenticate(username=username, password=password)
-            if user:
-                if user.is_active:
-                    login(request, user)
-                    return redirect("map")
+            if user and user.is_active:
+                login(request, user)
+                return redirect("map")
     else:
         form = TravellerForm()
 

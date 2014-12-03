@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^journeys/(?P<journey_id>\w+)/$', 'logbook.views.view_journey', name='view_journey'),
     url(r'^journeys/(?P<journey_id>\w+)/edit/$', 'logbook.views.edit_journey', name='edit_journey'),
     url(r'^journeys/(?P<journey_id>\w+)/remove/$', 'logbook.views.remove_journey', name='remove_journey'),
+
     # User registration
     url(r'^register/$', 'logbook.views.register', name='register'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),

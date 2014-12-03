@@ -79,7 +79,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 # Use Amazon S3 for storage for uploaded media files.
@@ -93,6 +93,8 @@ STATICFILES_STORAGE = "require_s3.storage.OptimizedCachedStaticFilesStorage"
 # Amazon S3 settings.
 #
 
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#
 AWS_STORAGE_BUCKET_NAME = "myfirstbucket1503"
 
 AWS_AUTO_CREATE_BUCKET = True

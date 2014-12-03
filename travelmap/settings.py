@@ -79,6 +79,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 # Use Amazon S3 for storage for uploaded media files.
@@ -92,7 +93,6 @@ STATICFILES_STORAGE = "require_s3.storage.OptimizedCachedStaticFilesStorage"
 # Amazon S3 settings.
 #
 
-#
 AWS_STORAGE_BUCKET_NAME = "myfirstbucket1503"
 
 AWS_AUTO_CREATE_BUCKET = True

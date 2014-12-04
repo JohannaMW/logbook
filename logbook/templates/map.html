@@ -31,7 +31,7 @@ L.mapbox.featureLayer({
     },
     properties: {
         title: "{{ journey.title }}",
-        description: '{{ journey.description }} <img src="{{ url }}{{ journey.main_image }}" width="100px" height="100px">',
+        description: '{{ journey.summary }} <img src="{{ url }}{{ journey.main_image }}" width="100px" height="100px">',
 
         'marker-size': 'large',
         'marker-color': '{{ journey.marker_color }}',
